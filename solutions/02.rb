@@ -8,7 +8,7 @@ class Collection
   end
 
   def each
-    songs.each { |song| yield song }
+    @songs.each { |song| yield song }
   end
 
   def self.parse(songs_string)
@@ -20,15 +20,15 @@ class Collection
   end
 
   def artists
-    map { |song| song.artist }.uniq
+    @songs.map(&:artist).uniq
   end
 
   def albums
-    map { |song| song.album }.uniq
+    @songs.map(&:album).uniq
   end
 
   def names
-    map { |song| song.name }.uniq
+    @songs.map(&:name).uniq
   end
 
   def adjoin(other)
